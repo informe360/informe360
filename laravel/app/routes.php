@@ -25,6 +25,10 @@ Route::get('/','HomeController@home');
 Route::get('/login','HomeController@login_form');
 // Formulario de Registro
 Route::get('/register','HomeController@register_form');
+// Home Categorias
+Route::get('/categorias','HomeController@showCategories');
+// Home Categorias
+Route::get('/todos-los-anuncios','HomeController@allPost');
 // Validar Login
 Route::post('validate-login', 'HomeController@login_validate');
 // Registro de Usuario

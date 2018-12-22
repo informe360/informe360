@@ -29,18 +29,18 @@
 						@if(Session::get('list'))
 							<?php $list = Session::get('list');?>
 							<table class="table table-striped">
-							@foreach($list as $category)
-							 	<tr>
-							 		<td>{{ $category->name }}</td>
-							 		<td><a href="<?=URL::to('admin/categorias/editar')?>/{{$category->id}}">Editar</a></td>
-							 		<td><a href="<?=URL::to('admin/subcategorias/listar')?>/{{$category->id}}">Ver Subcategorias</a></td>
-							 	@if($category->status == 1)
-							 		<td><a href="<?=URL::to('admin/categorias/desactivar')?>/{{$category->id}}">Eliminar</a></td>
-							 	@elseif($category->status == 0)
-							 		<td><a href="<?=URL::to('admin/categorias/desactivar')?>/{{$category->id}}">Activar</a></td>
-							 	@endif	
-							 	</tr>
-							 @endforeach	
+								@foreach($list as $category)
+									<tr>
+										<td>{{ $category->name }}</td>
+										<td><a href="<?=URL::to('admin/categorias/editar')?>/{{$category->id}}">Editar</a></td>
+										<td><a href="<?=URL::to('admin/subcategorias/listar')?>/{{$category->id}}">Ver Subcategorias</a></td>
+										@if($category->status == 1)
+											<td><a href="<?=URL::to('admin/categorias/desactivar')?>/{{$category->id}}">Eliminar</a></td>
+										@elseif($category->status == 0)
+											<td><a href="<?=URL::to('admin/categorias/desactivar')?>/{{$category->id}}">Activar</a></td>
+										@endif	
+									</tr>
+								@endforeach	
 							</table>
 
 							<!-- pagination  -->

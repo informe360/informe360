@@ -115,7 +115,7 @@
 								</a>
 								
 							</li>
-							<li><a href="categories.html">Categorías</a></li>
+							<li><a href="/categorias">Categorías</a></li>
 							<li><a href="categories-main.html">Todos los Anuncios</a></li>
 							<li class="dropdown"><a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">Mis Compras <span class="caret"></span></a>
 								<ul class="dropdown-menu">
@@ -273,7 +273,7 @@
                   		{{ HTML::image('assets/images/nuevo-logo-2.png','Logo',array('class'=>'img-responsive')) }}
 					</a>
 				</div>
-				<div class="navbar-left">
+				<div class="navbar-right">
 					<div class="collapse navbar-collapse" id="navbar-collapse">
 						<ul class="nav navbar-nav">
 							<li class="active">
@@ -281,25 +281,22 @@
 									Inicio
 								</a>
 							</li>
-							<li><a href="categories.html">Categorías</a></li>
-							<li><a href="categories-main.html">Todos los Anuncios</a></li>
-							<li><a href="faq.html">Ayuda/Soporte</a></li>
+							<li><a href="/categorias">Categorías</a></li>
+							<li><a href="/todos-los-anuncios">Todos los Anuncios</a></li>
+							<!-- <li><a href="faq.html">Ayuda/Soporte</a></li> -->
 
 						</ul>
 					</div>
 				</div>
 				<div class="nav-right">
-					</div>
 					<!-- sign-in -->
 					<ul class="sign-in">
 						<li><i class="fa fa-user"></i></li>
 						<li><a href="{{ URL::action('HomeController@login_form') }}"> Entrar </a></li>
 						<li><a href="{{ URL::action('HomeController@register_form') }}">Registrarse</a></li>
 					</ul><!-- sign-in -->
-
-					<a href="ad-post.html" class="btn">Vender</a>
+					<a href="{{ URL::action('HomeController@register_form') }}" class="btn">Vender</a>
 				</div>
-				
 			</div>
 		</nav>
 	</header>
@@ -396,6 +393,7 @@
     <script src="{{asset('assets/js/jquery.countdown.js')}}"></script>
     <script src="{{asset('assets/js/custom.js')}}"></script>
     <script src="{{asset('assets/js/switcher.js')}}"></script>
+	<script src="{{asset('assets/js/utilsVendedor.js')}}"></script>
     <script src="{{asset('assets/js/newSubcategory.js')}}"></script>
     <script src="{{asset('assets/js/createLink.js')}}"></script>
     <script src="{{asset('assets/js/userDetails.js')}}"></script>

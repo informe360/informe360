@@ -138,4 +138,19 @@ class HomeController extends BaseController {
         return Redirect::to('/');
     }
 
+    /*    Funcion showCategories
+          descripcion: Busca las categorias y las muestras en una nueva vista junto con los anuncios
+    */
+    public function showCategories(){
+          $list = Category::get_list_category();
+          return View::make('home/category', array('list'=>$list));
+    }
+
+    /*    Funcion allPost
+          descripcion: Funcion que retorna todo los articulos por paginacion.
+    */
+    public function allPost(){
+     $list = Category::get_list_category();
+     return View::make('home/all-post', array('list'=>$list));
+}
 }

@@ -56,9 +56,9 @@
 							@foreach($listCategory as $category)
 								<?php $cont++; ?>
 								@if($cont == 1)
-									<li name='cat-{{$category->id}}' class='link-active active'>
+									<li name='cat-{{$category->id}}' class='link-active active categories-selected' id_category="{{$category->id}}">
 								@else
-									<li name='cat-{{$category->id}}'>
+									<li name='cat-{{$category->id}}' class='categories-selected' id_category="{{$category->id}}">
 								@endif
 								<a href="#cat{{$cont}}" aria-controls="cat{{$cont}}" role="tab" data-toggle="tab">
 									<span class="select">
@@ -75,22 +75,22 @@
 					<div class="col-md-4 col-sm-6">
 						<div class="section tab-content subcategory post-option">
 							<h4>Selecciona una subcategor&iacute;a</h4>
-						<?php $cont = 0; ?>
-						@foreach($listCategory as $category)
-							<?php $cont++; ?>
-								@if($cont == 1)
-									<div role="tabpanel" class="tab-pane active" id="cat{{$cont}}">
-								@else
-									<div role="tabpanel" class="tab-pane" id="cat{{$cont}}">
-								@endif		
-								<ul>
-								<?php $listSubcategory = SubCategory::get_list_subcategory($category->id); ?>
-								@foreach($listSubcategory as $subcategory)
-									<li name="sub-{{$subcategory->id}}"><a href="javascript:void(0)">{{$subcategory->name}}</a></li>
-								@endforeach	
-								</ul>
+							<?php $cont = 0; ?>
+							@foreach($listCategory as $category)
+								<?php $cont++; ?>
+									@if($cont == 1)
+										<div role="tabpanel" class="tab-pane active" id="cat{{$cont}}" >
+									@else
+								<div role="tabpanel" class="tab-pane" id="cat{{$cont}}">
+									@endif		
+									<ul>
+										<?php $listSubcategory = SubCategory::get_list_subcategory($category->id); ?>
+										@foreach($listSubcategory as $subcategory)
+											<li name="sub-{{$subcategory->id}}" class="sub-categories-selected" id_sub_category="{{$subcategory->id}}"><a href="javascript:void(0)">{{$subcategory->name}}</a></li>
+										@endforeach	
+									</ul>
 								</div>
-						@endforeach		
+							@endforeach		
 						</div>
 					</div>
 					<div class="col-md-4 col-sm-6">
@@ -98,7 +98,7 @@
 							<h2>Publica tu anuncio en sólo <span>30 segundos</span></h2>
 							<p>Por favor no publicar múltiples anuncios para los mismos artículos o servicios. Todos duplicados, spam y anuncios erróneamente clasificados se eliminarán.</p>
 							<div class="btn-section">
-								<a class="btn next" href="<?=URL::to('vendedor/agregar-detalles'); ?>">Siguiente</a>
+								<a class="btn next" id="btn_next_details" href="#">Siguiente</a>
 								<a href="#" class="btn-info">Cancelar</a>
 							</div>
 						</div>
