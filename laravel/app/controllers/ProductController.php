@@ -77,6 +77,17 @@ class ProductController extends BaseController{
         }
     }
 
+    public function activate_product($id){
+        if(Product::exist_product($id)){
+            Product::activate_product($id);
+
+            Session::flash('success', 'Al Aprobar');
+            return Redirect::back();
+        }else{
+            return View::make('errors/404');
+        }
+    }
+
     /************************************************************************
      *   Funcion:       pending_products
      *   Descripcion:   Retorna una lista de productos pendientes

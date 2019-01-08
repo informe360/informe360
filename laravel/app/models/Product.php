@@ -75,7 +75,7 @@ class Product extends Eloquent{
                 		if(!is_null($image)){
 							//guardamos el achivo
 	                		$name_file = $image->getClientOriginalName();
-							$destination = '/uploads/';
+                            $destination = '../uploads/';
 							$image->move($destination, $name_file);
 
 							//cargamos el archivo a la bd 
@@ -87,7 +87,7 @@ class Product extends Eloquent{
                 		
                 	}
 
-                	//se regitra la relacion entre poducto, categoria y subcategoria
+                	//se registra la relacion entre poducto, categoria y subcategoria
 	                $relation                  = new ProdCateSubc();
 	                $relation->product_id      = $product->id;
 	                $relation->category_id	   = $id_cat;
@@ -183,6 +183,30 @@ class Product extends Eloquent{
         
     }
 
+    public static function activate_product($id){
+        try {
+            DB::beginTransaction(); 
+
+            $product = Product::find($id);
+
+            $product->status = 2;
+
+            $product->save();
+
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollback();
+            
+            $errores                =   New ErrorIncidence();
+            $errores->script        =   "Product";
+            $errores->funcion       =   "activate_product";
+            $errores->codigo        =   $e->getCode();
+            $errores->linea         =   $e->getLine();
+            $errores->descripcion   =   $e->getMessage();
+            $errores->save();
+        }
+        
+    }
     /************************************************************************
      *   Funcion:       get_pending
      *   Descripcion:   Retona un listado de los productos pendientes

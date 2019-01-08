@@ -104,7 +104,8 @@ class HomeController extends BaseController {
      *					
      ************************************************************************/
 	public function home_admin(){
-		return View::make('admin/home');
+          $products = Product::where('status', 1)->get();
+		return View::make('admin/home', array('products'=>$products));
 	}
 
 	/************************************************************************

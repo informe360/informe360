@@ -189,6 +189,8 @@ Route::get('vendedor/agregar-detalles/{id_cat}/{id_sub}','ProductController@ad_p
 Route::post('vendedor/agregar_producto/{id_cat}/{id_sub}','ProductController@add_product');
 //Desactiva un producto seleccionado
 Route::get('vendedor/desactivar/{id}','ProductController@desactivate_product');
+//Activa un producto seleccionado
+Route::get('vendedor/activar/{id}','ProductController@activate_product');
 //Retorna los anuncios no publicados
 Route::get('vendedor/no-publicados','ProductController@productsNotPublished');
 //Retorna los productos pendientes
