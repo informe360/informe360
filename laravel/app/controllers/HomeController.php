@@ -21,7 +21,8 @@ class HomeController extends BaseController {
      *
      ************************************************************************/
 	public function home(){
-		return View::make('home/home');
+          $products = Product::where('status', 1)->get();
+		return View::make('home/home', array('products'=>$products));
 	}
 
 	/************************************************************************
@@ -144,8 +145,23 @@ class HomeController extends BaseController {
     */
     public function showCategories(){
           $list = Category::get_list_category();
-          return View::make('home/category', array('list'=>$list));
+          $products = Product::where('status', 1)->get();          
+          return View::make('home/category', array('list'=>$list, 'products'=>$products));
     }
+
+     /*    Funcion showCategoriesFilter
+          descripcion: Busca las publicaciones de la categoria seleccionada.
+    */
+     public function showCategoriesFilter($id){
+          $list = Category::get_list_category();
+          $products = ProdCateSubc::join('product', 'prod_cate_subc.product_id', '=', 'product.id')
+               ->join('category', 'prod_cate_subc.category_id', '=', 'category.id')
+               ->join('subcategory', 'prod_cate_subc.subcategory_id', '=', 'subcategory.id')
+               ->where('category.name', '=', $id)
+               ->select('product.*', 'category.name as categoria', 'subcategory.name as subcategoria')
+               ->get();
+          return View::make('home/category', array('list'=>$list, 'products'=>$products));
+     }
 
     /*    Funcion allPost
           descripcion: Funcion que retorna todo los articulos por paginacion.

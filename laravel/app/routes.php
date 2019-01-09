@@ -27,6 +27,8 @@ Route::get('/login','HomeController@login_form');
 Route::get('/register','HomeController@register_form');
 // Home Categorias
 Route::get('/categorias','HomeController@showCategories');
+// Home Categoria filtrada.
+Route::get('/categorias/{id}','HomeController@showCategoriesFilter');
 // Home Categorias
 Route::get('/todos-los-anuncios','HomeController@allPost');
 // Validar Login

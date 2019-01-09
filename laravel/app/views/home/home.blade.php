@@ -57,7 +57,7 @@
 					<div class="section category-ad text-center">
 						<ul class="category-list">
 							<li class="category-item">
-								<a href="categories.html">
+								<a href="<?=URL::to('categorias/Vehículos')?>">
 									<div class="category-icon">
 										{{ HTML::image('assets/images/icon/1.png','images',array('class'=>'img-responsive')) }}
 									</div>
@@ -67,17 +67,17 @@
 							</li><!-- category-item -->
 
 							<li class="category-item">
-								<a href="categories.html">
+								<a href="<?=URL::to('categorias/Electrónica & Equipos')?>">
 									<div class="category-icon">
 										{{ HTML::image('assets/images/icon/2.png','images',array('class'=>'img-responsive')) }}
 									</div>
-									<span class="category-title">Electronica & Equipos</span>
+									<span class="category-title">Electrónica & Equipos</span>
 									<span class="category-quantity">(621)</span>
 								</a>
 							</li><!-- category-item -->
 
 							<li class="category-item">
-								<a href="categories.html">
+								<a href="<?=URL::to('categorias/Inmuebles')?>">
 									<div class="category-icon">
 										{{ HTML::image('assets/images/icon/3.png','images',array('class'=>'img-responsive')) }}
 									</div>
@@ -90,7 +90,7 @@
 							</li><!-- category-item -->
 
 							<li class="category-item">
-								<a href="categories.html">
+								<a href="<?=URL::to('categorias/Moda & Ropa')?>">
 									<div class="category-icon">
 										{{ HTML::image('assets/images/icon/5.png','images',array('class'=>'img-responsive')) }}
 									</div>
@@ -100,17 +100,17 @@
 							</li><!-- category-item -->
 
 							<li class="category-item">
-								<a href="categories.html">
+								<a href="<?=URL::to('categorias/Repuesto')?>">
 									<div class="category-icon">
 										{{ HTML::image('assets/images/icon/6.png','images',array('class'=>'img-responsive')) }}
 									</div>
-									<span class="category-title">Mascotas</span>
+									<span class="category-title">Repuestos</span>
 									<span class="category-quantity">(145)</span>
 								</a>
 							</li><!-- category-item -->
 
 							<li class="category-item">
-								<a href="categories.html">
+								<a href="<?=URL::to('categorias/Artículos Hogar')?>">
 									<div class="category-icon">
 										{{ HTML::image('assets/images/icon/9.png','images',array('class'=>'img-responsive')) }}
 									</div>
@@ -123,7 +123,7 @@
 							</li><!-- category-item -->
 
 				            <li class="category-item">
-				            	<a href="categories.html">
+				            	<a href="<?=URL::to('categorias/Servicios')?>">
 				            	<div class="category-icon">
 				            		{{ HTML::image('assets/images/icon/7.png','images',array('class'=>'img-responsive')) }}
 				            	</div>
@@ -133,11 +133,11 @@
 							</li><!-- category-item -->
 
 							<li class="category-item">
-								<a href="categories.html">
+								<a href="<?=URL::to('categorias/Otros productos')?>">
 									<div class="category-icon">
 										{{ HTML::image('assets/images/icon/12.png','images',array('class'=>'img-responsive')) }}
 									</div>
-									<span class="category-title">Otros Productos </span>
+									<span class="category-title">Otros productos </span>
 									<span class="category-quantity">(298)</span>
 								</a>
 							</li><!-- category-item -->
@@ -162,9 +162,11 @@
 						<!-- featured-slider -->
 						<div class="featured-slider">
 							<div id="featured-slider" >
+							@foreach($products as $product)
 								<!-- featured -->
 								<div class="featured">
 									<div class="featured-image">
+										<?php $image = Image::where('product_id','=',$product->id)->get()->first(); ?>
 										<a href="details.html">
 											{{ HTML::image('assets/images/featured/1.jpg','images',array('class'=>'img-responsive')) }}
 										</a>
@@ -173,12 +175,17 @@
 
 									<!-- ad-info -->
 									<div class="ad-info">
-										<h3 class="item-price">$800.00</h3>
+										@if($product->negotiable)
+											<h3 class="item-price">Bs.S {{$product->cost}} <span>(Negociable)</span></h3>
+										@else
+											<h3 class="item-price">Bs.S {{$product->cost}} </h3>
+										@endif
 										<h4 class="item-title">
-											<a href="details.html"Apple MacBook Pro with Retina Display</a>
+											<a href="details.html">{{$product->title}}</a>
 										</h4>
 										<div class="item-cat">
-											<span><a href="#">Electronics & Gedgets</a></span>
+											<?php $relation = ProdCateSubc::where('product_id','=',$product->id)->get()->first(); ?>
+											<span><a href="#">{{Category::find($relation->category_id)->name;}}</a></span>
 										</div>
 									</div><!-- ad-info -->
 
@@ -194,130 +201,10 @@
 										</div><!-- item-info-right -->
 									</div><!-- ad-meta -->
 								</div><!-- featured -->
+							@endforeach	
+							
 
-								<div class="featured">
-									<div class="featured-image">
-										<a href="details.html">
-											{{ HTML::image('assets/images/featured/2.jpg','images',array('class'=>'img-responsive')) }}
-										</a>
-									</div>
-
-									<!-- ad-info -->
-									<div class="ad-info">
-										<h3 class="item-price">$25000.00</h3>
-										<h4 class="item-title">
-											<a href="details.html"2016 Bugatti Veyron Sport Middlecar</a>
-										</h4>
-										<div class="item-cat">
-											<span><a href="#">Cars & Vehicles</a></span>
-										</div>
-									</div><!-- ad-info -->
-
-									<!-- ad-meta -->
-									<div class="ad-meta">
-										<div class="meta-content">
-											<span class="dated"><a href="#">7 Jan 10:10 pm </a></span>
-										</div>
-										<!-- item-info-right -->
-										<div class="user-option pull-right">
-											<a href="#" data-toggle="tooltip" data-placement="top" title="Los Angeles, USA"><i class="fa fa-map-marker"></i> </a>
-											<a href="#" data-toggle="tooltip" data-placement="top" title="Individual"><i class="fa fa-user"></i> </a>
-										</div><!-- item-info-right -->
-									</div><!-- ad-meta -->
-								</div><!-- featured -->
-
-								<div class="featured">
-									<div class="featured-image">
-										<a href="details.html">
-											{{ HTML::image('assets/images/featured/3.jpg','images',array('class'=>'img-responsive')) }}
-										</a>
-										<a href="#" class="verified" data-toggle="tooltip" data-placement="left" title="Verified"><i class="fa fa-check-square-o"></i></a>
-									</div>
-
-									<!-- ad-info -->
-									<!-- ad-info -->
-									<div class="ad-info">
-										<h3 class="item-price">$250.00 <span class="negotiable">(Negotiable)</span></h3>
-										<h4 class="item-title">
-											<a href="details.html"Vivster Acoustic Guitar</a>
-										</h4>
-										<div class="item-cat">
-											<span><a href="#">Music & Art</a></span>
-										</div>
-									</div><!-- ad-info -->
-
-									<!-- ad-meta -->
-									<div class="ad-meta">
-										<div class="meta-content">
-											<span class="dated"><a href="#">7 Jan 10:10 pm </a></span>
-										</div>
-										<!-- item-info-right -->
-										<div class="user-option pull-right">
-											<a href="#" data-toggle="tooltip" data-placement="top" title="Los Angeles, USA"><i class="fa fa-map-marker"></i> </a>
-											<a href="#" data-toggle="tooltip" data-placement="top" title="Dealer"><i class="fa fa-suitcase"></i> </a>
-										</div><!-- item-info-right -->
-									</div><!-- ad-meta -->
-								</div><!-- featured -->
-								<div class="featured">
-									<div class="featured-image">
-										<a href="details.html">
-											{{ HTML::image('assets/images/featured/3.jpg','images',array('class'=>'img-responsive')) }}
-										</a>
-									</div>
-
-									<!-- ad-info -->
-									<div class="ad-info">
-										<h3 class="item-price">$50.00</h3>
-										<h4 class="item-title">
-											<a href="details.html">Rick Morton- Magicius Chase</a>
-										</h4>
-										<div class="item-cat">
-											<span><a href="#">Books & Magazines</a></span>
-										</div>
-									</div><!-- ad-info -->
-
-									<!-- ad-meta -->
-									<div class="ad-meta">
-										<div class="meta-content">
-											<span class="dated"><a href="#">7 Jan 10:10 pm </a></span>
-										</div>
-										<!-- item-info-right -->
-										<div class="user-option pull-right">
-											<a href="#" data-toggle="tooltip" data-placement="top" title="Los Angeles, USA"><i class="fa fa-map-marker"></i> </a>
-											<a href="#" data-toggle="tooltip" data-placement="top" title="Individual"><i class="fa fa-user"></i> </a>
-										</div><!-- item-info-right -->
-									</div><!-- ad-meta -->
-								</div><!-- featured -->
-
-								<div class="featured">
-									<div class="featured-image">
-										<a href="details.html">
-											{{ HTML::image('assets/images/featured/3.jpg','images',array('class'=>'img-responsive')) }}
-										</a>
-									</div>
-
-									<!-- ad-info -->
-									<div class="ad-info">
-										<h3 class="item-price">$380.00</h3>
-										<h4 class="item-title"><a href="#">Samsung Galaxy S6 Edge</a></h4>
-										<div class="item-cat">
-											<span><a href="#">Electronics & Gedgets</a></span>
-										</div>
-									</div><!-- ad-info -->
-
-									<!-- ad-meta -->
-									<div class="ad-meta">
-										<div class="meta-content">
-											<span class="dated"><a href="#">7 Jan 10:10 pm </a></span>
-										</div>
-										<!-- item-info-right -->
-										<div class="user-option pull-right">
-											<a href="#" data-toggle="tooltip" data-placement="top" title="Los Angeles, USA"><i class="fa fa-map-marker"></i> </a>
-											<a href="#" data-toggle="tooltip" data-placement="top" title="Individual"><i class="fa fa-user"></i> </a>
-										</div><!-- item-info-right -->
-									</div><!-- ad-meta -->
-								</div><!-- featured -->
-							</div><!-- featured-slider -->
+														</div><!-- featured-slider -->
 						</div><!-- #featured-slider -->
 					</div><!-- featureds -->
 
