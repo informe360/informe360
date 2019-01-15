@@ -23,7 +23,16 @@ class HomeController extends BaseController {
 	public function home(){
           $products = Product::where('status', 1)->get();
 		return View::make('home/home', array('products'=>$products));
-	}
+     }
+     
+     public function detailsPost($id) {
+          $productDetail = Product::where('id', $id)->get();
+          $productDetail = $productDetail[0];
+          $listCat = Category::get_list_category();
+          $user = User::where('id', '=', $productDetail['user_id'])->get()->first();
+          $imagesProduct = Image::where('product_id','=',$productDetail->id)->get();
+          return View::make('product/details', compact('productDetail', 'user'), array('listCategory' => $listCat, 'imagesProduct' => $imagesProduct));
+     }
 
 	/************************************************************************
      *   Funcion: 		login_form
@@ -82,7 +91,7 @@ class HomeController extends BaseController {
             }elseif(Auth::user()->type == 2 && Auth::user()->status == 1){
             	return Redirect::to('/comprador');
             }elseif(Auth::user()->type == 3 && Auth::user()->status == 1){
-            	return Redirect::to('/vendedor');
+            	return Redirect::to('/vendedor/nuevo-anuncio');
             }elseif((Auth::user()->type == 1 && Auth::user()->status == 0) || (Auth::user()->type == 1 && Auth::user()->status == 2)){
             	Session::flash('danger', "Su cuenta esta inactiva o cerrada. Comun&iacute;quese con el administrador de la p&aacute;gina");
            		return Redirect::back();

@@ -128,7 +128,7 @@
 									<div class="item-image-box col-sm-4">
 										<div class="item-image">
 											<?php $image = Image::where('product_id','=',$product->id)->get()->first(); ?>
-											<a href="details.html">{{ HTML::image($image->route,'Logo',array('class'=>'img-responsive')) }}</a>
+											<a href="<?=URL::to('/anuncio/detalles/'.$product->id)?>">{{ HTML::image($image->route,'Logo',array('class'=>'img-responsive')) }}</a>
 										</div><!-- item-image -->
 									</div>
 									
@@ -141,7 +141,7 @@
 											@else
 												<h3 class="item-price">Bs.S {{$product->cost}} </h3>
 											@endif
-											<h4 class="item-title"><a href="#">{{$product->title}}</a></h4>
+											<h4 class="item-title"><a href="<?=URL::to('/anuncio/detalles/'.$product->id)?>">{{$product->title}}</a></h4>
 											<div class="item-cat">
 												<?php $relation = ProdCateSubc::where('product_id','=',$product->id)->get()->first(); ?>
 												<span><a href="#">{{Category::find($relation->category_id)->name;}}</a></span> /

@@ -16,9 +16,9 @@
 
 			<div class="ad-profile section">
 					<div class="user-profile">
-						<div class="user-images">
+						<!-- <div class="user-images">
 							{{ HTML::image('assets/images/user.jpg','Logo',array('class'=>'img-responsive')) }}
-						</div>
+						</div> -->
 						<div class="user">
 							<h2>Hola, <a href="#">{{Auth::user()->name;}}.</a></h2>
 							<h5>Tú última sesión fue: {{Auth::user()->last_login}}</h5>
@@ -35,13 +35,14 @@
 					</div><!-- user-profile -->
 
 					<ul class="user-menu">
+						<li><a href="{{ URL::action('ProductController@select_product') }}">Nuevo Anuncio</a></li>
 						<li><a href="{{ URL::action('HomeController@home_seller') }}">Todos Mis Anuncios</a></li>
 						<!--<li><a href="my-ads.html">Todos Mis Anuncios</a></li>-->
-						<li class="active"><a href="{{ URL::action('ProductController@productsNotPublished') }}">Anuncios No Publicados</a></li>
 						<li><a href="{{ URL::action('ProductController@pending_products') }}">Pendiente de Aprobación</a></li>
-						<li><a href="{{ URL::action('ProductController@select_product') }}">Nuevo Anuncio</a></li>
-						<li><a href="{{ URL::action('UsersController@profile_seller') }}">Perfil</a></li>
-						<li><a href="delete-account.html">Cerrar tu Cuenta</a></li>
+						<li class="active"><a href="{{ URL::action('ProductController@productsNotPublished') }}">Anuncios No Publicados</a></li>
+						
+						<!-- <li><a href="ventas-realizadas.html">Ventas Realizadas</a></li> -->
+						<!-- <li><a href="ventas-noconcretada.html">Ventas por Concretar</a></li> -->
 					</ul>
 
 

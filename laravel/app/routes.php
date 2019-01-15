@@ -29,8 +29,10 @@ Route::get('/register','HomeController@register_form');
 Route::get('/categorias','HomeController@showCategories');
 // Home Categoria filtrada.
 Route::get('/categorias/{id}','HomeController@showCategoriesFilter');
-// Home Categorias
+// Home all anuncios
 Route::get('/todos-los-anuncios','HomeController@allPost');
+// Home ver detalles de un anuncio
+Route::get('/anuncio/detalles/{id}','HomeController@detailsPost');
 // Validar Login
 Route::post('validate-login', 'HomeController@login_validate');
 // Registro de Usuario

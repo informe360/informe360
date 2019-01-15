@@ -73,7 +73,8 @@ class Product extends Eloquent{
                 		$image = $inputs['file'.$i];
 
                 		if(!is_null($image)){
-							//guardamos el achivo
+                            //guardamos el achivo
+                            
 	                		$name_file = $image->getClientOriginalName();
                             $destination = '../uploads/';
 							$image->move($destination, $name_file);
@@ -82,7 +83,27 @@ class Product extends Eloquent{
 	                		$files                 = new Image();
 	                		$files->product_id     = $product->id;
 	                		$files->route          = $destination.$name_file;
-	                		$files->save();
+                            $files->save();
+                            
+                            // A partir de aca empezamos a modificar las imagenes cargadas para que posean la misma resolucion
+                            $rutaImagen = $files->route; 
+                            $rutaDestino = $files->route;
+                            
+                            $anchoThumb = 1000;
+                            $altoThumb = 667;
+                            $calidad = 80;
+
+                            $original = imagecreatefromJPEG($rutaImagen);
+                            if ($original !== false){
+                            $thumb = imageCreatetrueColor($anchoThumb,$altoThumb);
+                                if ($thumb !== false){
+                                    $ancho = imagesx($original);
+                                    $alto = imagesy($original);
+
+                                    imagecopyresampled($thumb,$original,0,0,0,0,$anchoThumb,$altoThumb,$ancho,$alto);
+                                    $resultado = imagejpeg($thumb,$rutaDestino,$calidad);
+                                }
+                            }
                 		}
                 		
                 	}
@@ -114,7 +135,7 @@ class Product extends Eloquent{
                 $errores->save();
             }
         }
-	}
+    }
 
     /************************************************************************
      *   Funcion:       get_list

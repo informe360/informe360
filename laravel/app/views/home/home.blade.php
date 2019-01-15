@@ -167,8 +167,8 @@
 								<div class="featured">
 									<div class="featured-image">
 										<?php $image = Image::where('product_id','=',$product->id)->get()->first(); ?>
-										<a href="details.html">
-											{{ HTML::image('assets/images/featured/1.jpg','images',array('class'=>'img-responsive')) }}
+										<a href="<?=URL::to('/anuncio/detalles/'.$product->id)?>">
+											{{ HTML::image($image->route,'images',array('class'=>'img-responsive')) }}
 										</a>
 										<a href="#" class="verified" data-toggle="tooltip" data-placement="left" title="Verificado"><i class="fa fa-check-square-o"></i></a>
 									</div>
@@ -181,7 +181,7 @@
 											<h3 class="item-price">Bs.S {{$product->cost}} </h3>
 										@endif
 										<h4 class="item-title">
-											<a href="details.html">{{$product->title}}</a>
+											<a href="<?=URL::to('/anuncio/detalles/'.$product->id)?>">{{$product->title}}</a>
 										</h4>
 										<div class="item-cat">
 											<?php $relation = ProdCateSubc::where('product_id','=',$product->id)->get()->first(); ?>
