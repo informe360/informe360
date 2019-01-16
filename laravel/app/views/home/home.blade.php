@@ -20,7 +20,7 @@
 			                <li><a href="#">Servicios & Empresas</a></li>
 			                <li><a href="#">Moda & Ropa</a></li>
 							<li><a href="#">Electronica & Equipos</a></li>
-			                <li><a href="#">Mascotas</a</li>
+			                <li><a href="#">Mascotas</a></li>
 			                <li><a href="#">Artículos /Hogar</a></li>
 			                <li><a href="#">Otros productos</a></li>
 
@@ -192,6 +192,9 @@
 									<!-- ad-meta -->
 									<div class="ad-meta">
 										<div class="meta-content">
+											<?php 
+												$fecha = strftime("%d %b, %y %H:%M", strtotime($product->created_at));
+											?>
 											<span class="dated"><a href="#">7 Jan 10:10 pm </a></span>
 										</div>
 										<!-- item-info-right -->

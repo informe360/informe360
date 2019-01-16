@@ -22,7 +22,7 @@ class HomeController extends BaseController {
      ************************************************************************/
 	public function home(){
           $products = Product::where('status', 1)->get();
-		return View::make('home/home', array('products'=>$products));
+		return View::make('home/index', array('products'=>$products));
      }
      
      public function detailsPost($id) {
