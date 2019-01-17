@@ -1,5 +1,7 @@
 <?php
 
+
+
 class HomeController extends BaseController {
 
 	/*
@@ -33,6 +35,19 @@ class HomeController extends BaseController {
           $imagesProduct = Image::where('product_id','=',$productDetail->id)->get();
           return View::make('product/details', compact('productDetail', 'user'), array('listCategory' => $listCat, 'imagesProduct' => $imagesProduct));
      }
+
+     /************************************************************************
+     *   Funcion: 		buscadorAnuncios
+     *   Descripcion:   Esta funcion es la encargada de buscar los anuncios segun lo
+     * colocado en el input del buscador.
+     ************************************************************************/
+     public function buscadorAnuncios() {
+          $palabra =  Input::get('palabra');
+          $products = Product::where('title','LIKE',"%{$palabra}%")->limit(10)->get();
+          return Response::json($products);
+     }
+
+
 
 	/************************************************************************
      *   Funcion: 		login_form

@@ -3,7 +3,44 @@
 	<!-- world-gmap -->
 	<section id="main" class="clearfix home-two">
 		<!-- gmap -->	
-		<div id="road_map"></div>		
+		<div id="road_map">
+			<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+				<!-- Indicators -->
+				<!-- <ol class="carousel-indicators">
+					<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+					<li data-target="#carousel-example-generic" data-slide-to="1"></li>
+					<li data-target="#carousel-example-generic" data-slide-to="2"></li>
+				</ol> -->
+
+				<!-- Wrapper for slides -->
+				<div class="carousel-inner" role="listbox">
+					<div class="item active">
+					<img src="assets/images/poster6.jpg" alt="...">
+					<div class="carousel-caption">
+						<h3>Encuentra la pc de tus sueños</h3>
+						<p>Contacta al vendedor y listo</p>
+					</div>
+					</div>
+					<div class="item">
+					<img src="assets/images/poster5.jpg" alt="...">
+					<div class="carousel-caption">
+						<h3>Los mejores equipos del mercado</h3>
+						<p>Busca las publicaciones referentes a equipos de tecnologia en un click</p>
+					</div>
+					</div>
+				</div>
+
+				<!-- Controls -->
+				<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+					<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+					<span class="sr-only">Previous</span>
+				</a>
+				<a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+					<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+					<span class="sr-only">Next</span>
+				</a>
+			</div>
+		</div>		
 		
 		<div class="container">
 			<div class="row">
@@ -11,7 +48,7 @@
 				<div class="col-sm-12">
 					<div class="banner-section text-center">						
 						<!-- banner-form -->
-						<div class="banner-form banner-form-full">
+						<div class="banner-form banner-form-full" id="div-search">
 							<form action="#">
 								<!-- category-change -->
                                 <div class="dropdown category-dropdown">
@@ -29,28 +66,22 @@
                                     </ul>
                                 </div><!-- category-change -->
 								
-								<!-- language-dropdown -->
-								<!-- <div class="dropdown category-dropdown language-dropdown ">						
-									<a data-toggle="dropdown" href="#"><span class="change-text">United Kingdom</span> <i class="fa fa-angle-down"></i></a>
-									<ul class="dropdown-menu  language-change">
-										<li><a href="#">United Kingdom</a></li>
-										<li><a href="#">United States</a></li>
-										<li><a href="#">China</a></li>
-										<li><a href="#">Russia</a></li>
-									</ul>								
-                                </div> -->
-                                <!-- language-dropdown -->
-							
-								<input type="text" class="form-control" placeholder="Escribe la palabra clave">
+								<input type="text" class="form-control" placeholder="Escribe la palabra clave" id="search-input">
 								<button type="submit" class="form-control" value="Search">Buscar</button>
 							</form>
-						</div><!-- banner-form -->						
+						</div><!-- banner-form -->
+						<div class="col-md-12">
+							<div class="list-group text-left" style="display:none; position: absolute; z-index: 1; top: 38%; width: 100%; box-shadow: 0px 0px 0px 5px #efeeee !important; font-weight: bold;" id="item-search">
+
+							</div>
+						</div>
+                        	
 					</div>
 				</div><!-- banner -->
 			</div><!-- row -->
 
 			<!-- category-ad -->
-			<div class="category-ad text-center">
+			<div class="col-md-12 category-ad text-center" style="margin-bottom: 3% !important;">
 				<ul class="category-list">	
 					<li class="category-item">
 						<a href="<?=URL::to('categorias/Vehículos')?>">
@@ -108,40 +139,13 @@
 						</a>
 					</li><!-- category-item -->
 					
-					<!-- <li class="category-item">
-						<a href="categories.html">
-							<div class="category-icon"><img src="assets/images/icon/11.png" alt="images" class="img-responsive"></div>
-							<span class="category-title">Music & Arts</span>
-							<span class="category-quantity">(212)</span>
-						</a>
-                    </li> -->
-                    <!-- category-item -->
-					
 					<li class="category-item">
 						<a href="<?=URL::to('categorias/Otros productos')?>">
 							<div class="category-icon"><img src="assets/images/icon/12.png" alt="images" class="img-responsive"></div>
 							<span class="category-title">Otros productos </span>
 							<!-- <span class="category-quantity">(1298)</span> -->
 						</a>
-					</li><!-- category-item -->
-					
-					<!-- <li class="category-item">
-						<a href="categories.html">
-							<div class="category-icon"><img src="assets/images/icon/7.png" alt="images" class="img-responsive"></div>
-							<span class="category-title">Job Openings </span>
-							<span class="category-quantity">(124)</span>
-						</a>
-                    </li> -->
-                    <!-- category-item -->
-					
-					<!-- <li class="category-item">
-						<a href="categories.html">
-							<div class="category-icon"><img src="assets/images/icon/8.png" alt="images" class="img-responsive"></div>
-							<span class="category-title">Books & Magazines</span>
-							<span class="category-quantity">(972)</span>
-						</a>
-                    </li> -->
-                    <!-- category-item -->					
+					</li><!-- category-item -->			
                 </ul>	
                 			
 			</div><!-- category-ad -->			
@@ -396,7 +400,7 @@
 	</footer><!-- footer -->
 	
 	<!--/Preset Style Chooser--> 
-	<div class="style-chooser">
+	<!-- <div class="style-chooser">
 		<div class="style-chooser-inner">
 			<a href="#" class="toggler"><i class="fa fa-life-ring fa-spin"></i></a>
 			<h4>Presets</h4>
@@ -407,6 +411,6 @@
 				<li class="preset4" data-preset="4"><a href="#" data-color="preset4"></a></li>
 			</ul>
 		</div>
-	</div>
+	</div> -->
     <!--/End:Preset Style Chooser-->
 @stop

@@ -394,6 +394,7 @@
     <script src="{{asset('assets/js/custom.js')}}"></script>
     <script src="{{asset('assets/js/switcher.js')}}"></script>
 	<script src="{{asset('assets/js/utilsVendedor.js')}}"></script>
+	<script src="{{asset('assets/js/utilsHome.js')}}"></script>
     <script src="{{asset('assets/js/newSubcategory.js')}}"></script>
     <script src="{{asset('assets/js/createLink.js')}}"></script>
     <script src="{{asset('assets/js/userDetails.js')}}"></script>

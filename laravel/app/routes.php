@@ -27,6 +27,8 @@ Route::get('/login','HomeController@login_form');
 Route::get('/register','HomeController@register_form');
 // Home Categorias
 Route::get('/categorias','HomeController@showCategories');
+// Home ruta para buscar los anuncios segun lo que inserte en el campo
+Route::post('/buscando-anuncios','HomeController@buscadorAnuncios');
 // Home Categoria filtrada.
 Route::get('/categorias/{id}','HomeController@showCategoriesFilter');
 // Home all anuncios
